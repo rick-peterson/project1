@@ -1,6 +1,6 @@
 import os
 import math
-from flask import Flask, session, render_template, request, flash, redirect, url_for, abort
+from flask import Flask, session, render_template, request, flash, redirect, url_for, abort, jsonify
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -222,7 +222,7 @@ def my_api(isbn):
     except TypeError:
         api_dict["average_score"] = average_score[0]
 
-    return api_dict
+    return jsonify(api_dict)
 
 
 if __name__ == "__main__":
