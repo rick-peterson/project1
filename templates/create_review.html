@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	Post Review
+{%endblock%}
+
+{% block body %}
+
+
+<div class="content-section">
+	<br>
+		
+
+		<form method="POST" action="">
+
+			
+			<fieldset class="form-group">
+				<div class="form-group">
+				    <label for="exampleFormControlSelect1">Rate: <strong>"{{ book_name }}"</strong> </label>
+				    <select class="form-control" name="rating" style="width: 60px;">
+				      <option>1</option>
+				      <option>2</option>
+				      <option>3</option>
+				      <option>4</option>
+				      <option>5</option>
+				    </select>
+			  	</div>
+				    
+				</div>									
+					<div class="form-group">
+					    <label for="exampleFormControlTextarea1">Write Your Review</label>
+					    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="What do you think?" name="content"></textarea>
+				    </div>
+
+				    <div class="form-group">
+						<button type="submit" class="btn btn-lg btn-primary ">Submit Review</button>
+						
+					</div>	
+
+			</fieldset>	
+					
+		</form>
+	
+		
+		
+	</div>
+
+{%endblock%}	
+
+<!-- <ion-icon name="star-half"></ion-icon> filled-->
+<!-- <ion-icon name="star-half-outline"></ion-icon> outline-->
+ <!-- <ion-icon name="star-half-sharp"></ion-icon>  -->
+ <!-- <button type="submit" class="btn btn-lg btn-primary disabled"> -->

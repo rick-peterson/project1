@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	Book
+{%endblock%}
+
+{% block body %}
+
+<h3>{{ total }} Reviews for: "{{res.title}}" </h3>
+
+	
+	<div class="list-group">
+		<a href="#" class="list-group-item list-group-item-action list-group-item-info"><strong>{{ res.title }}</strong> &nbsp[Received an average rating of <strong>{{ average_rating }}</strong> from a total of <strong>{{ work_ratings_count }}</strong> ratings from <strong>GoodReads</strong>] <br> by {{ res.author }} &nbsp &nbsp &nbsp Published {{ res.year }} </a>	
+	</div>	<br>
+	
+	<br><br>
+	<div>
+		<h3>COMMUNITY REVIEWS</h3>
+	</div>
+	{% for review in reviews %}
+		<article class="media content-section">
+			
+		  <div class="media-body">
+		    <div class="article-metadata">
+		      <a class="mr-2" href="{{ url_for('my_reviews') }}">{{ review.username }}</a>
+		      <small class="text-muted">{{ review.date_posted.strftime('%Y-%m-%d') }}</small>
+		    </div>
+		    
+		    <p class="article-content">{{ review.content }}</p>
+		  </div>
+		</article>
+	{% endfor %}
+	<br>
+	<div class="form-group">
+		 <a class="btn btn-danger" href="{{ url_for('new_review', book_id=res.id) }}" role="button">Post Review</a>
+						
+					</div>	
+	
+	<nav aria-label="Search results pages">		
+	  <ul class="pagination pagination-sm">	  	
+	    {% for page_num in page_list %}	   
+			{% if page_num == page %}  			
+		    <li class="page-item active"  ><a class="page-link"  href="{{url_for('book', id=id, page=page_num)}}">{{ page_num }}</a></li>	
+		    {% else %}		   
+		     <li class="page-item "  ><a class="page-link"  href="{{url_for('search',query=q, page=page_num)}}">{{ page_num }}</a></li>		     
+		 	{% endif %}		 	
+	    {% endfor %}
+	    
+	  </ul>
+	
+
+	</nav> 
+	
+{%endblock%}
